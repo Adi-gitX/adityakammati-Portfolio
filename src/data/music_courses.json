@@ -1,0 +1,112 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "AdiGitX-BlogPage",
+      "slug": "personal-goal-setting-blog-page",
+      "description": "A blog page with blogs, todo, projects I build, my GitHub link, and also has theme change.",
+      "price": 149.99,
+      "instructor": "Adityakammati",
+      "github": "https://github.com/Adi-gitX/Adi-gitX-BlogsPageX/",
+      "livelink": "https://adi-gitx-blog.vercel.app/",
+      "isFeatured": true,
+      "image": "/courses/blogpage.png"
+    },
+    {
+      "id": 2,
+      "title": "ArtifyX",
+      "slug": "pixel-based-painting-site",
+      "description": "A painting website which has pixel-based art, and the imagination is the end.",
+      "price": 149.99,
+      "instructor": "Adityakammati",
+      "github": "https://artify-x.vercel.app/",
+      "livelink": "https://adi-gitx-blog.vercel.app/",
+      "isFeatured": true,
+      "image": "/courses/ARTIFY.png"
+    },
+    {
+      "id": 3,
+      "title": "TRIPWHIZ",
+      "slug": "ai based trip planner",
+      "description": "A simple Ai based trip planner which takes care of everything requred for a best trip to be planned.|powered by open Ai api.",
+      "price": 99.99,
+      "instructor": "Rohit arora",
+      "isFeatured": true,
+      "github": "https://github.com/Adi-gitX/TRIPWHIZ-ai-based-trip-planner",
+      "livelink": "https://tripwhizx.vercel.app/",
+      "image": "/courses/tripwhiz.png"
+    },
+    {
+      "id": 4,
+      "title": "Quiz-appX",
+      "slug": "Quiz-appX-for-beginners",
+      "description": "Welcome to the Quiz App, developed for the Mid Semester course at Newton School.",
+      "price": 109.99,
+      "instructor": "my self",
+      "isFeatured": false,
+      "github": "https://github.com/Adi-gitX/Quiz-appX",
+      "livelink": "https://quiz-appx.vercel.app/",
+      "image": "/courses/quizapp.png"
+    },
+    {
+      "id": 5,
+      "title": "TwitterX-clone",
+      "slug": "TwitterX-clone (Non-intractive[-->basic])",
+      "description": "A simple Twitter clone web application designed with HTML and CSS.",
+      "price": 119.99,
+      "instructor": "Soumitra mishra",
+      "github": "https://github.com/Adi-gitX/TwitterX-clone",
+      "livelink": "https://twitter-clonex.vercel.app/",
+      "isFeatured": true,
+      "image": "/courses/twitter.png"
+    },
+    {
+      "id": 6,
+      "title": "2048-Game",
+      "slug": "A Simple 2048 game",
+      "description": "A simple implementation of the classic 2048 game in HTML, CSS, and JavaScript.",
+      "price": 129.99,
+      "instructor": "Soumitra mishra and Surendra puri",
+      "github": "https://github.com/Adi-gitX/2048-Game",
+      "livelink": "https://2048x.vercel.app/",
+      "isFeatured": false,
+      "image": "/courses/2048.png"
+    },
+    {
+      "id": 7,
+      "title": "LinkedInX-clone",
+      "slug": "A simple Linkedin clone",
+      "description": "A replica of the LinkedIn website interface created with HTML, CSS, and JavaScript.",
+      "price": 139.99,
+      "instructor": "Soumitra mishra and Surendra puri",
+      "github": "https://github.com/Adi-gitX/LinkedInX-clone",
+      "livelink": "https://linkedinx.vercel.app/",
+      "isFeatured": false,
+      "image": "/courses/linkedin.png"
+    },
+    {
+      "id": 8,
+      "title": "TIC-TAC-TOE-XGAME",
+      "slug": "A simple tic tac toe game interface",
+      "description": "A classic Tic-Tac-Toe game with a modern twist, built using HTML, CSS, and JavaScript.",
+      "price": 149.99,
+      "instructor": "Soumitra mishra and Surendra puri",
+      "github": "https://github.com/Adi-gitX/TIC-TAC-TOE-XGAME",
+      "livelink": "https://tic-tac-toe-xgame.vercel.app/",
+      "isFeatured": true,
+      "image": "/courses/tictactoe.png"
+    },
+    {
+      "id": 9,
+      "title": "Thinkyfy App",
+      "slug": "Our first Hackathon project",
+      "description": "A simple social media app that have leaderboard and management of all your coding platforms",
+      "price": 149.99,
+      "instructor": "Adityakammati, manish kumar, prashanth, somyarangan behara",
+      "github": "https://github.com/Adi-gitX/thinkyfy",
+      "livelink": "https://thinkyfy.vercel.app/",
+      "isFeatured": true,
+      "image": "/courses/thinkyfy.png"
+    }
+  ]
+}
