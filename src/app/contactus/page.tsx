@@ -14,9 +14,7 @@ function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -24,78 +22,78 @@ function ContactForm() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setResponseMessage("🌟 Sending your message...");
-
-    const formDataString = `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`;
-
+  
+    if (!formData.name || !formData.email || !formData.message) {
+      setResponseMessage("🚨 Please fill out all fields!");
+      setIsSubmitting(false);
+      return;
+    }
+  
     try {
-      // Sending an email to the user
-      const userResponse = await fetch(
-        "https://send-x.vercel.app/api/send-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            to: formData.email, // Sending email to the user
-            subject: "Thank You for Reaching Out 💌",
-            text: `Hi ${formData.name} 👋,\n\nThank you so much for reaching out! 💖 I&apos;ve received your message and will respond shortly. 📬\n\nYour message: \n"${formData.message}"\n\nLooking forward to connecting with you soon! 💬\n\nBest regards,\n Aditya kammati`,
-          }),
-        }
-      );
-
-      // Check if the user response is ok
+      const payloadUser = {
+        recipient: formData.email, // Ensure backend expects `recipient`
+        subject: "Thank You for Reaching Out 💌",
+        body: `Hi ${formData.name},\n\nThank you so much for reaching out! 💖\n\nYour message: "${formData.message}"\n\nI'll respond shortly!\n\nBest regards,\nAditya Kammati`,
+      };
+  
+      const payloadAdmin = {
+        recipient: "adityakammati.workspace@gmail.com", // Adjust to backend expectations
+        subject: `${formData.name} reached out through the contact form 📨`,
+        body: `🎉 New message from ${formData.name} (${formData.email}):\n\n"${formData.message}"\n\nPlease respond at your earliest convenience.`,
+      };
+  
+      // Send to the user
+      const userResponse = await fetch("https://send-x.vercel.app/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payloadUser),
+      });
+  
       if (!userResponse.ok) {
-        console.log("User Response Error:", await userResponse.text()); // Log the error message for debugging
+        const errorText = await userResponse.text();
+        console.error("User Response Error:", errorText);
         setResponseMessage(
-          "Oops! 😞 Something went wrong. Please check your email address and try again."
+          "Oops! 😞 Something went wrong while sending your confirmation email. Please check your email address and try again."
         );
         return;
       }
-
-      // Sending an email to you (admin)
-      const adminResponse = await fetch(
-        "https://send-x.vercel.app/api/send-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            to: "adityakammati.workspace@gmail.com", // Admin email
-            subject: `${formData.name} reached out through the contact form 📨`,
-            text: `🎉 You&apos;ve received a new message from ${formData.name} (${formData.email}).\n\nMessage:\n"${formData.message}"\n\nPlease check your inbox and respond accordingly. 📥`,
-          }),
-        }
-      );
-
-      // Check if the admin response is ok
+  
+      // Send to admin
+      const adminResponse = await fetch("https://send-x.vercel.app/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payloadAdmin),
+      });
+  
       if (!adminResponse.ok) {
-        console.log("Admin Response Error:", await adminResponse.text()); // Log the error message for debugging
+        const errorText = await adminResponse.text();
+        console.error("Admin Response Error:", errorText);
         setResponseMessage(
           "Oops! 😞 Something went wrong while sending the message to the admin. Please try again later."
         );
         return;
       }
-
-      // If both emails are successfully sent, display success message
+  
       setResponseMessage(
         "✨ Success! Your message has been sent. I'll get back to you shortly! 🙌"
       );
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error("Error:", error); // Log error details
-      setResponseMessage(
-        "😔 Oops! Something went wrong. Please try again later."
-      );
+      console.error("Error:", error);
+      setResponseMessage("😔 Oops! Something went wrong. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <div className="h-screen w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
