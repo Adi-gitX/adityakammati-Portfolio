@@ -2,7 +2,7 @@
 
 import { BackgroundBeams } from "../../components/ui/background-beams";
 import { ButtonX } from "../../components/ui/cvborder";
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -14,7 +14,8 @@ function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
 
-  const handleChange = (e) => {
+  // Handle input changes with proper event type
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -22,7 +23,8 @@ function ContactForm() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  // Handle form submission with proper event type
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setResponseMessage("🌟 Sending your message...");
@@ -93,7 +95,6 @@ function ContactForm() {
       setIsSubmitting(false);
     }
   };
-  
 
   return (
     <div className="h-screen w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
