@@ -67,7 +67,7 @@ function ContactForm() {
       }
   
       // Send to admin
-      const adminResponse = await fetch("https://send-x.vercel.app/api/send-email", {
+      const adminResponse = await fetch("https://send-x.vercel.app/api/contactme", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
